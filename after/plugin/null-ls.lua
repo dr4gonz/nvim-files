@@ -17,7 +17,9 @@ null_ls.setup({
         return utils.root_has_file({ ".luacheckrc" })
       end,
     }),
-    null_ls.builtins.formatting.prettier.with({ extra_args = {"--no-semi", "--single-quote", "--no-bracket-spacing", "--trailing-comma es5"}})
+    null_ls.builtins.formatting.prettier.with({ extra_args = {"--no-semi", "--single-quote", "--no-bracket-spacing", "--trailing-comma es5"}}),
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.code_actions.eslint,
   },
   on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
