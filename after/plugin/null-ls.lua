@@ -18,8 +18,8 @@ null_ls.setup({
       end,
     }),
     null_ls.builtins.formatting.prettier.with({ extra_args = {"--no-semi", "--single-quote", "--no-bracket-spacing", "--trailing-comma es5"}}),
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.code_actions.eslint,
+    null_ls.builtins.diagnostics.eslint.with({ command = "eslint_d", filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"} }),
+    null_ls.builtins.code_actions.eslint_d,
   },
   on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
