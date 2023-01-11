@@ -17,7 +17,10 @@ lsp.setup_nvim_cmp({ mapping = cmp_mappings })
 lsp.on_attach(function(client, bufnr)
 
 	local opts = {buffer = bufnr, remap = false}
-
+    if client.name == "volar" or client.name == "tsserver" then
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentFormattingRangeProvider = false
+  end
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 	vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -31,6 +34,7 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-vim.diagnostic.config({
-    virtual_text = true,
-})
+-- The following will add diagnostic text next to the lines the text would appear on
+--vim.diagnostic.config({
+    --virtual_text = true,
+--})
