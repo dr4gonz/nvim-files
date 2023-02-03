@@ -65,6 +65,10 @@ return require('packer').startup(function(use)
         -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
     }
     use {'m4xshen/autoclose.nvim'}
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 end)
 
 
