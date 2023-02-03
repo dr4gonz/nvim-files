@@ -21,3 +21,10 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+-- Open NVim Tree when neovim is opened
+local function open_nvim_tree()
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
