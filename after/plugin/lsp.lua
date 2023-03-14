@@ -1,7 +1,7 @@
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
-lsp.ensure_installed({'tsserver', 'sumneko_lua','rust_analyzer', 'pyright'})
+lsp.ensure_installed({'tsserver', 'rust_analyzer', 'pyright'})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
