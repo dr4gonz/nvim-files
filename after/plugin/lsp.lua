@@ -41,6 +41,12 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+require('lspconfig').ruff_lsp.setup({
+  on_attach = function(client,bufnr)
+    client.server_capabilities.hoverProvider = false
+  end
+})
+
 lsp.setup()
 --The following will add diagnostic text next to the lines the text would appear on
 vim.diagnostic.config({

@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     --use { "ellisonleao/gruvbox.nvim", config = function() vim.cmd('colorscheme gruvbox') end }
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.3',
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
@@ -78,7 +78,7 @@ return require('packer').startup(function(use)
     use {'m4xshen/autoclose.nvim'}
     use {
       'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 end)
 
