@@ -1,12 +1,4 @@
 local null_ls = require("null-ls")
-local lsp_formatting = function(bufnr)
-  vim.lsp.buf.format({
-    filter = function(client)
-      return client.name == "null-ls"
-    end,
-    bufnr = bufnr,
-  })
-end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
@@ -32,7 +24,6 @@ null_ls.setup({
         group = augroup,
         buffer = bufnr,
         callback = function()
-          --lsp_formatting(bufnr)
           vim.lsp.buf.format({ async = false })
         end,
       })
