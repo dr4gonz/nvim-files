@@ -1,5 +1,6 @@
 return {
-  "MunifTanjim/prettier.nvim",
-  config = function()
-  end
+	"MunifTanjim/prettier.nvim",
+	config = function()
+		require("prettier").setup({})
+	end,
 }
