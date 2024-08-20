@@ -11,6 +11,11 @@ return {
 					"ui/js/.*",
 					"ui/js/unlayer-editor/*",
 				},
+				layout_config = {
+					horizontal = {
+						width = 0.9,
+					},
+				},
 			},
 		})
 		vim.api.nvim_create_autocmd("LspAttach", {
