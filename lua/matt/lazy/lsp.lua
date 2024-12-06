@@ -24,7 +24,7 @@ return {
 		)
 
 		require("fidget").setup({})
-		require("mason").setup({})
+		require("mason").setup({ log_level = vim.log.levels.DEBUG })
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
@@ -57,6 +57,12 @@ return {
 								},
 							},
 						},
+					})
+				end,
+				["pyright"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.pyright.setup({
+						capabilities = capabilities,
 					})
 				end,
 			},
