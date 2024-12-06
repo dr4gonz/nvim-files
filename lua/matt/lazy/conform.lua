@@ -10,13 +10,13 @@ return {
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
 				lua = { "stylua" },
-				python = { "isort", "black", "ruff_fix", "ruff_format" },
+				python = { "isort", "ruff_fix", "ruff_format" },
 			},
 			format_on_save = function(bufnr)
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 					return
 				end
-				return { lsp_fallback = true, async = false, timeout_ms = 1000 }
+				return { lsp_fallback = true, async = false, timeout_ms = 2500 }
 			end,
 		})
 
