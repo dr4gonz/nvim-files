@@ -11,24 +11,18 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
+		"saghen/blink.cmp",
 	},
 
 	config = function()
-		local cmp = require("cmp")
-		local cmp_lsp = require("cmp_nvim_lsp")
-		local capabilities = vim.tbl_deep_extend(
-			"force",
-			{},
-			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities()
-		)
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		require("fidget").setup({})
 		require("mason").setup({ log_level = vim.log.levels.DEBUG })
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
-				"tsserver",
+				"ts_ls",
 				"rust_analyzer",
 			},
 			handlers = {
@@ -41,6 +35,7 @@ return {
 				["ruff_lsp"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.ruff_lsp.setup({
+						capabilities = capabilities,
 						on_attach = function(client, bufnr)
 							client.server_capabilities.hoverProvider = false
 						end,
@@ -66,32 +61,6 @@ return {
 					})
 				end,
 			},
-		})
-
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					require("luasnip").lsp_expand(args.body) -- for 'luasnip' users
-				end,
-			},
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
-			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				["<C-Space>"] = cmp.mapping.complete(),
-			}),
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- for 'luasnip' users
-			}, {
-				{ name = "buffer" },
-			}),
 		})
 
 		vim.diagnostic.config({
