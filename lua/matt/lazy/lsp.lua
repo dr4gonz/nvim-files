@@ -31,16 +31,6 @@ return {
 						capabilities = capabilities,
 					})
 				end,
-
-				["ruff_lsp"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.ruff_lsp.setup({
-						capabilities = capabilities,
-						on_attach = function(client, bufnr)
-							client.server_capabilities.hoverProvider = false
-						end,
-					})
-				end,
 				["lua_ls"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.lua_ls.setup({
