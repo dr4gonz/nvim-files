@@ -50,6 +50,12 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+				["ruff"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.ruff.setup({
+						capabilities = capabilities,
+					})
+				end,
 			},
 		})
 
