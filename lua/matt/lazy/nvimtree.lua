@@ -108,6 +108,7 @@ return {
 			},
 			filters = {
 				dotfiles = true,
+				git_ignored = false,
 			},
 		})
 		-- Open NVim Tree when neovim is opened
