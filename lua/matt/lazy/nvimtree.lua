@@ -112,9 +112,11 @@ return {
 			},
 		})
 		-- Open NVim Tree when neovim is opened
-		local function open_nvim_tree()
-			-- open the tree
-			require("nvim-tree.api").tree.open()
+		local function open_nvim_tree(data)
+			local is_file = vim.fn.filereadable(data.file) == 1
+			if is_file then
+				require("nvim-tree.api").tree.open()
+			end
 		end
 		vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 	end,
